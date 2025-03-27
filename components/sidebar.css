@@ -1,34 +1,55 @@
-.sidebar {
+/* Self-contained CSS variables for the sidebar component */
+.sidebar-component {
+  --sidebar-background: #e5e7eb;
+  --sidebar-text-color: #333333;
+  --sidebar-border-color: #d1d5db;
+  --sidebar-completed-color: #10b981;
+  --sidebar-in-progress-color: #f59e0b;
+  --sidebar-not-started-color: #6b7280;
+  --sidebar-hover-color: #f1f5f9;
+  --sidebar-completed-text: #3b82f6;
+  --sidebar-vertical-line-color: #d1d5db;
+
   width: 280px;
-  background-color: var(--background-color);
-  border-right: 1px solid var(--border-color);
+  background-color: var(--sidebar-background);
+  border-right: 1px solid var(--sidebar-border-color);
   display: flex;
   flex-direction: column;
   height: calc(100vh - 70px);
   overflow-y: auto;
+  color: var(--sidebar-text-color);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans",
+    "Helvetica Neue", sans-serif;
 }
 
-.sidebar-header {
+.sidebar-component * {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.sidebar-component .sidebar-header {
   padding: 20px;
-  border-bottom: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--sidebar-border-color);
 }
 
-.sidebar-header h2 {
+.sidebar-component .sidebar-header h2 {
   margin-bottom: 15px;
   font-size: 18px;
+  font-weight: 600;
 }
 
-.sidebar-content {
+.sidebar-component .sidebar-content {
   flex: 1;
   overflow-y: auto;
   padding: 10px 0;
 }
 
-.dropdown-container {
+.sidebar-component .dropdown-container {
   margin-bottom: 5px;
 }
 
-.dropdown-header {
+.sidebar-component .dropdown-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -38,53 +59,53 @@
   transition: background-color 0.2s;
 }
 
-.dropdown-header:hover {
-  background-color: var(--hover-color);
+.sidebar-component .dropdown-header:hover {
+  background-color: var(--sidebar-hover-color);
 }
 
-.parent-item {
+.sidebar-component .parent-item {
   display: flex;
   align-items: center;
 }
 
-.dropdown-arrow {
+.sidebar-component .dropdown-arrow {
   font-size: 10px;
   transition: transform 0.2s;
 }
 
-.dropdown-arrow.expanded {
+.sidebar-component .dropdown-arrow.expanded {
   transform: rotate(180deg);
 }
 
-.dropdown-content {
+.sidebar-component .dropdown-content {
   padding: 5px 0 5px 60px;
   position: relative;
 }
 
-.children-container {
+.sidebar-component .children-container {
   position: relative;
 }
 
-.child-item-wrapper {
+.sidebar-component .child-item-wrapper {
   position: relative;
   margin-bottom: 15px;
 }
 
-.child-item-wrapper:last-child {
+.sidebar-component .child-item-wrapper:last-child {
   margin-bottom: 0;
 }
 
-.vertical-connector {
+.sidebar-component .vertical-connector {
   position: absolute;
   width: 1px;
-  background-color: var(--vertical-line-color);
+  background-color: var(--sidebar-vertical-line-color);
   top: -15px; /* Connect to the previous circle */
   height: 15px; /* Height to reach the current circle */
   left: 10px; /* Center of the circle */
   z-index: 1;
 }
 
-.dropdown-item {
+.sidebar-component .dropdown-item {
   display: flex;
   align-items: center;
   padding: 10px 20px 10px 0;
@@ -93,44 +114,44 @@
   position: relative;
 }
 
-.dropdown-item:hover {
-  background-color: var(--hover-color);
+.sidebar-component .dropdown-item:hover {
+  background-color: var(--sidebar-hover-color);
 }
 
-.dropdown-item.completed-text {
-  color: var(--completed-text);
+.sidebar-component .dropdown-item.completed-text {
+  color: var(--sidebar-completed-text);
 }
 
-.status-indicator {
+.sidebar-component .status-indicator {
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  border: 1px solid var(--border-color);
+  border: 1px solid var(--sidebar-border-color);
   margin-right: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
   z-index: 2;
-  background-color: var(--background-color);
+  background-color: var(--sidebar-background);
 }
 
-.status-completed {
-  background-color: var(--completed-color);
-  border-color: var(--completed-color);
+.sidebar-component .status-completed {
+  background-color: var(--sidebar-completed-color);
+  border-color: var(--sidebar-completed-color);
 }
 
-.status-in-progress {
-  background-color: var(--in-progress-color);
-  border-color: var(--in-progress-color);
+.sidebar-component .status-in-progress {
+  background-color: var(--sidebar-in-progress-color);
+  border-color: var(--sidebar-in-progress-color);
 }
 
-.status-not-started {
-  background-color: var(--not-started-color);
-  border-color: var(--not-started-color);
+.sidebar-component .status-not-started {
+  background-color: var(--sidebar-not-started-color);
+  border-color: var(--sidebar-not-started-color);
 }
 
-.status-icon {
+.sidebar-component .status-icon {
   color: white;
   font-size: 12px;
 }
