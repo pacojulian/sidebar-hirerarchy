@@ -1,22 +1,26 @@
 :root {
   --primary-color: #4a6cf7;
   --background-color: #e5e7eb;
-  --sidebar-bg: #ffffff;
   --header-bg: #ffffff;
   --text-color: #333333;
   --border-color: #d1d5db;
-  --completed-color: #10b981;
-  --in-progress-color: #f59e0b;
-  --not-started-color: #6b7280;
-  --hover-color: #f1f5f9;
-  --completed-text: #3b82f6;
-  --vertical-line-color: #d1d5db;
+
+  /* Layout variables */
+  --header-height: 70px;
+  --sidebar-width: 280px;
 }
 
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  overflow: hidden; /* Prevent scrolling on the body */
 }
 
 body {
@@ -26,14 +30,75 @@ body {
   color: var(--text-color);
 }
 
+/* Main layout container - override any parent constraints */
 .app-container {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+  display: grid;
+  grid-template-areas:
+    "header header"
+    "sidebar main";
+  grid-template-rows: var(--header-height) 1fr;
+  grid-template-columns: var(--sidebar-width) 1fr;
+  height: 100vh;
+  width: 100vw;
+  max-width: 100vw !important; /* Override any parent max-width */
+  margin: 0 !important; /* Override any parent margins */
+  padding: 0 !important; /* Override any parent padding */
+  overflow: hidden;
+  position: absolute; /* Take it out of normal flow if needed */
+  top: 0;
+  left: 0;
 }
 
-.content-layout {
-  display: flex;
-  flex: 1;
+/* Header area */
+.app-header {
+  grid-area: header;
+  background-color: var(--header-bg);
+  border-bottom: 1px solid var(--border-color);
+  z-index: 10;
+  overflow: hidden;
+} 
+
+/* Sidebar area */
+.app-sidebar {
+  grid-area: sidebar;
+  overflow-y: auto;
+  border-right: 1px solid var(--border-color);
+  z-index: 5;
+}
+
+/* Main content area */
+.app-main {
+  grid-area: main;
+  overflow-y: auto;
+  background-color: var(--background-color);
+}
+
+/* For browsers that don't fully support grid */
+@supports not (display: grid) {
+  .app-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
+
+  .app-header {
+    height: var(--header-height);
+    width: 100%;
+  }
+
+  .app-sidebar {
+    position: absolute;
+    top: var(--header-height);
+    left: 0;
+    width: var(--sidebar-width);
+    height: calc(100vh - var(--header-height));
+  }
+
+  .app-main {
+    margin-left: var(--sidebar-width);
+    margin-top: var(--header-height);
+    width: calc(100% - var(--sidebar-width));
+    height: calc(100vh - var(--header-height));
+  }
 }
 
