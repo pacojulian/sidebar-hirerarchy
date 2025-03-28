@@ -1,11 +1,11 @@
 .main-content {
-  flex: 1;
   padding: 30px;
-  background-color: var(--background-color);
+  height: 100%;
+  width: 100%;
 }
 
 .content-container {
-  background-color: var(--sidebar-bg);
+  background-color: #ffffff;
   border-radius: 8px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   padding: 25px;
@@ -26,15 +26,15 @@
 }
 
 .status-completed {
-  background-color: var(--completed-color);
+  background-color: #10b981;
 }
 
 .status-in-progress {
-  background-color: var(--in-progress-color);
+  background-color: #f59e0b;
 }
 
 .status-not-started {
-  background-color: var(--not-started-color);
+  background-color: #6b7280;
 }
 
 .content-body {
